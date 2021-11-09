@@ -19,10 +19,9 @@
 ## 3.1. Linear Regression
 
 ## 3.2. Logistic Regression
-  * [Predition of Chronic Kidney Disease (CKD)](Screening for Chronic Kidney Disease/Logistic Regression.ipynb)
-
+  * [Screening for Chronic Kidney Disease/Logistic Regression.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Screening%20for%20Chronic%20Kidney%20Disease/Logistic%20Regression.ipynb)
 ## 3.3. Random Forest
-  * [Predition of Chronic Kidney Disease (CKD)](Screening for Chronic Kidney Disease/Random Forest.ipynb)
+  * [Screening for Chronic Kidney Disease/Random Forest.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Screening%20for%20Chronic%20Kidney%20Disease/Random%20Forest.ipynb)
 ## 3.4. Naive Bayes Classifier
 
 ## 3.5. Support Vector Machine

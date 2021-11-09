@@ -1,30 +1,34 @@
-# - [Contents](#contents)
-- [- Contents](#--contents)
-- [1. Data Visualization](#1-data-visualization)
-- [2. Machine Learning Projects](#2-machine-learning-projects)
-  - [2.1. Linear Regression](#21-linear-regression)
-  - [2.2. Logistic Regression](#22-logistic-regression)
-  - [2.3. Naive Bayes Classifier](#23-naive-bayes-classifier)
-  - [2.4. Support Vector Machine](#24-support-vector-machine)
-  - [2.5. Clustering](#25-clustering)
-  - [2.6. Deep Learning](#26-deep-learning)
-  - [2.7. Sentiment Analysis](#27-sentiment-analysis)
+# 1. - [Contents](#contents)
+- [1. - Contents](#1---contents)
+- [2. Data Visualization](#2-data-visualization)
+- [3. Machine Learning Projects](#3-machine-learning-projects)
+  - [3.1. Linear Regression](#31-linear-regression)
+  - [3.2. Logistic Regression](#32-logistic-regression)
+  - [3.3. Random Forest](#33-random-forest)
+  - [3.4. Naive Bayes Classifier](#34-naive-bayes-classifier)
+  - [3.5. Support Vector Machine](#35-support-vector-machine)
+  - [3.6. Clustering](#36-clustering)
+  - [3.7. Deep Learning](#37-deep-learning)
+  - [3.8. Sentiment Analysis](#38-sentiment-analysis)
 
 
-# 1. Data Visualization
+# 2. Data Visualization
 
-# 2. Machine Learning Projects
+# 3. Machine Learning Projects
 
-## 2.1. Linear Regression
+## 3.1. Linear Regression
 
-## 2.2. Logistic Regression
+## 3.2. Logistic Regression
+  * [Predition of Chronic Kidney Disease (CKD)](Screening for Chronic Kidney Disease/Logistic Regression.ipynb)
 
-## 2.3. Naive Bayes Classifier
+## 3.3. Random Forest
+  * [Predition of Chronic Kidney Disease (CKD)](Screening for Chronic Kidney Disease/Random Forest.ipynb)
+## 3.4. Naive Bayes Classifier
 
-## 2.4. Support Vector Machine
+## 3.5. Support Vector Machine
 
-## 2.5. Clustering
+## 3.6. Clustering
 
-## 2.6. Deep Learning
+## 3.7. Deep Learning
 
-## 2.7. Sentiment Analysis
+## 3.8. Sentiment Analysis

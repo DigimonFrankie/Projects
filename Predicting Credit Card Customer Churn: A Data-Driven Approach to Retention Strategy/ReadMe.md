@@ -60,8 +60,8 @@ This project demonstrates my ability to frame a business problem, apply ML techn
 
 ## 📈 Results
 
-- **Best model**:   
-- **ROC-AUC Score**: 
+- **Best model**:   Logistic regression
+- **ROC-AUC Score**: 91.6%  
 - **Top churn predictors**:
   
 
@@ -69,17 +69,17 @@ This project demonstrates my ability to frame a business problem, apply ML techn
 
 ## 📌 Key Takeaways
 
-<!-- - Class imbalance was handled using SMOTE and stratified sampling.
+- Class imbalance was handled using SMOTE and stratified sampling.
 - Feature importance revealed actionable retention levers.
-- The model could help prioritize which customers should receive retention offers. -->
+- The model could help prioritize which customers should receive retention offers.
 
 ---
 
 ## 🧠 Future Work
 
-<!-- - Deploy model as a REST API
+- Deploy model as a REST API
 - Incorporate time-series data for temporal trends
-- Test interventions based on predictions -->
+- Test interventions based on predictions
 
 ---
 

@@ -45,13 +45,14 @@ This project demonstrates my ability to frame a business problem, apply ML techn
    - Visualize class imbalance  
    - Analyze relationships between features and churn
 3. **Feature Engineering**  
-   - Derived variables (e.g., engagement ratio, activity flags)
+   - Log transformation for high skewed features
 4. **Modeling**  
    - Baseline: Logistic Regression  
    - Tree-based models: Random Forest, XGBoost
 5. **Evaluation**  
    - ROC-AUC, confusion matrix, classification report
    - Feature importance interpretation
+   - Shap value visualization
 6. **Insights**  
    - What behaviors indicate risk?
    - What actions can a business take?
@@ -60,8 +61,8 @@ This project demonstrates my ability to frame a business problem, apply ML techn
 
 ## 📈 Results
 
-- **Best model**:   Logistic regression
-- **ROC-AUC Score**: 91.6%  
+- **Best model**:   XGBoost
+- **ROC-AUC Score**: 99.2%  
 - **Top churn predictors**:
   
 
@@ -82,7 +83,11 @@ This project demonstrates my ability to frame a business problem, apply ML techn
 - Test interventions based on predictions
 
 ---
+## Documents
 
+For step by step model training and interpretation, please see the notebook
+
+---
 ## 📬 Contact
 
 If you'd like to collaborate or ask questions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/frankhzhao/) or weifu.h.zhao@gmail.com.

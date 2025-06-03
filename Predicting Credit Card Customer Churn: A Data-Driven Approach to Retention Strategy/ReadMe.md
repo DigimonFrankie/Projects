@@ -95,8 +95,8 @@ Key achievements:
 ## 📚 Documentation & Notebooks
 
 - [Optimal Models.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Optimal%20Models.ipynb) – Final model summary and business interpretation
-- [Logistic Regression (Step by step).ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Logistic%20Regression%20(Step%20by%20step).ipynb) – Baseline modeling
-- [Ensemble Trees (Step by step).ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Emsemble%20Trees%20(Step%20by%20step).ipynb) – Random Forest & XGBoost
+- [Logistic Regression (Step by step).ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Step%20by%20step/Logistic%20Regression%20(Step%20by%20step).ipynb) – Baseline modeling
+- [Ensemble Trees (Step by step).ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Step%20by%20step/Emsemble%20Trees%20(Step%20by%20step).ipynb) – Random Forest & XGBoost
 
 ---
 

@@ -91,13 +91,13 @@ Key achievements:
 
 ## 📚 Documentation & Notebooks
 
-- [EDA & Preprocessing.ipynb](#) – Data cleaning, exploratory data analysis, and visualization  
-- [Logistic Regression.ipynb](#) – Building and evaluating a logistic regression baseline  
-- [SVM.ipynb](#) – Training and assessing a Support Vector Machine classifier  
-- [Naive Bayes.ipynb](#) – Implementing and interpreting a Naive Bayes model  
-- [LSTM.ipynb](#) – Applying LSTM neural networks for sequential text classification  
-- [BERT Deep Learning.ipynb](#) – Fine-tuning and testing a transformer-based BERT model  
-- [Interpretability & Reporting.ipynb](#) – Explaining model decisions, visualizing feature importances, and summarizing results  
+- [EDA & Preprocessing.ipynb](#) – Data cleaning, exploratory data analysis, and visualization  - 🚧 in progress
+- [Logistic Regression.ipynb](#) – Building and evaluating a logistic regression baseline  - 🚧 in progress
+- [SVM.ipynb](#) – Training and assessing a Support Vector Machine classifier  - 📋 to-do
+- [Naive Bayes.ipynb](#) – Implementing and interpreting a Naive Bayes model  - 📋 to-do
+- [LSTM.ipynb](#) – Applying LSTM neural networks for sequential text classification  - 📋 to-do
+- [BERT Deep Learning.ipynb](#) – Fine-tuning and testing a transformer-based BERT model  - 📋 to-do
+- [Interpretability & Reporting.ipynb](#) – Explaining model decisions, visualizing feature importances, and summarizing results  - 📋 to-do
 
 ---
 

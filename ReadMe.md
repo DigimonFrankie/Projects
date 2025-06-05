@@ -23,7 +23,7 @@
 
   * [Screening for Chronic Kidney Disease/Random Forest.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Screening%20for%20Chronic%20Kidney%20Disease/Random%20Forest.ipynb)
 ## 2.4. Naive Bayes Classifier
-
+ * [Detecting Fake News: Real vs. Fabricated Online News Content]()
 ## 2.5. Support Vector Machine
 
 ## 2.6. Clustering

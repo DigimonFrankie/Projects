@@ -1,4 +1,4 @@
-# Detecting Fake News: Real vs. Fabricated Media Headlines
+# Detecting Fake News: Real vs. Fabricated Online News Content
 
 A data science project using modern NLP and machine learning to separate the facts from the detecting fake news stories with end-to-end classification, interpretability, and a modular workflow.
 

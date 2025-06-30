@@ -1,35 +1,17 @@
-# 1. - [Contents](#contents)
-- [1. - Contents](#1---contents)
-- [2. Machine Learning Projects](#2-machine-learning-projects)
-  - [2.1. Linear Regression](#21-linear-regression)
-  - [2.2. Logistic Regression](#22-logistic-regression)
-  - [2.3. Ensemble Tree](#23-ensemble-tree)
-  - [2.4. Naive Bayes Classifier](#24-naive-bayes-classifier)
-  - [2.5. Support Vector Machine](#25-support-vector-machine)
-  - [2.6. Clustering](#26-clustering)
-  - [2.7. Deep Learning](#27-deep-learning)
-  - [2.8. Sentiment Analysis](#28-sentiment-analysis)
+🗂️ Project Portfolio
 
-# 2. Machine Learning Projects
+Welcome to my data science and machine learning project portfolio!
+This repo showcases a collection of hands-on analytics, machine learning, and NLP projects tackling real-world challenges in finance, healthcare, and AI.
 
-## 2.1. Linear Regression
+Each project entry below links to code, step-by-step notebooks, and experiment results.
+Categories and methods (like Baseline, Ensemble Trees, Deep Learning) are broken down for clarity — so you can jump right into the action that interests you.
 
-## 2.2. Logistic Regression
-  * [Predicting Credit Card Customer Churn: A Data-Driven Approach to Retention Strategy](https://github.com/DigimonFrankie/Projects/blob/project_test_1.0/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Logistic%20Regression%20(Step%20by%20step).ipynb)
-  *  [Detecting Fake News: Real vs. Fabricated Online News Content](https://github.com/DigimonFrankie/Projects/tree/main/Detecting%20Fake%20News%3A%20Real%20vs.%20Fabricated%20Online%20News%20Content) - In progress
-  
-  * [Screening for Chronic Kidney Disease/Logistic Regression.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Screening%20for%20Chronic%20Kidney%20Disease/Logistic%20Regression.ipynb)
-## 2.3. Ensemble Tree
-  * [Predicting Credit Card Customer Churn: A Data-Driven Approach to Retention Strategy](https://github.com/DigimonFrankie/Projects/blob/project_test_1.0/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Emsemble%20Trees%20(Step%20by%20step).ipynb)
+Check out the table below for quick access to project descriptions and the core approaches behind each one.
+Click any project title to dive in.
 
-  * [Screening for Chronic Kidney Disease/Random Forest.ipynb](https://github.com/DigimonFrankie/Projects/blob/main/Screening%20for%20Chronic%20Kidney%20Disease/Random%20Forest.ipynb)
-## 2.4. Naive Bayes Classifier
- * [Detecting Fake News: Real vs. Fabricated Online News Content](https://github.com/DigimonFrankie/Projects/tree/main/Detecting%20Fake%20News%3A%20Real%20vs.%20Fabricated%20Online%20News%20Content) - In progress
-## 2.5. Support Vector Machine
- * [Detecting Fake News: Real vs. Fabricated Online News Content](https://github.com/DigimonFrankie/Projects/tree/main/Detecting%20Fake%20News%3A%20Real%20vs.%20Fabricated%20Online%20News%20Content) - In progress
-## 2.6. Clustering
 
-## 2.7. Deep Learning
- * [Detecting Fake News: Real vs. Fabricated Online News Content](https://github.com/DigimonFrankie/Projects/tree/main/Detecting%20Fake%20News%3A%20Real%20vs.%20Fabricated%20Online%20News%20Content) - In progress
-## 2.8. Sentiment Analysis
- * [Detecting Fake News: Real vs. Fabricated Online News Content](https://github.com/DigimonFrankie/Projects/tree/main/Detecting%20Fake%20News%3A%20Real%20vs.%20Fabricated%20Online%20News%20Content) - In progress
+Project|Topic|
+-|-
+[**Predicting Credit Card Customer Churn: A Data-Driven Approach to Retention Strategy**](https://github.com/DigimonFrankie/Projects/tree/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy)| • Finance <br> **Baseline**: <br>&nbsp;&nbsp; • [Logistic Regression](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Step%20by%20step/Logistic%20Regression%20(Step%20by%20step).ipynb)  <br> [**Emsemble Trees**](https://github.com/DigimonFrankie/Projects/blob/main/Predicting%20Credit%20Card%20Customer%20Churn%3A%20A%20Data-Driven%20Approach%20to%20Retention%20Strategy/Step%20by%20step/Emsemble%20Trees%20(Step%20by%20step).ipynb) <br>&nbsp;&nbsp; • Random Forest <br>&nbsp;&nbsp; • XGBoost
+**Detecting Fake News** <br> _In Progress_| • Natural Language Processing <br> **Baseline**: <br>&nbsp;&nbsp; • Logistic Regression Baseline: <br>&nbsp;&nbsp; • SVM <br>&nbsp;&nbsp; • Naive Bayes <br> **Deep Learning**: <br>&nbsp;&nbsp; • LSTM <br>&nbsp;&nbsp; • BERT 
+**Screening for Chronic Kidney Disease** <br> _Optimization_| <br> • Medical <br> **Baseline**: <br>&nbsp;&nbsp; • Logistic Regression  <br> **Emsemble Trees** <br>&nbsp;&nbsp; • Random Forest <br>&nbsp;&nbsp; • XGBoost

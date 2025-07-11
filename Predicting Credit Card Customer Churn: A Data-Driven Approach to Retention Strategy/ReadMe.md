@@ -72,7 +72,7 @@ Key achievements:
   - Low transaction count/frequency
   - Fewer product relationships
   - Declining transaction trends
-- **Actionable insight:** Customers with dropping engagement and fewer recent transactions are at highest churn risk—these are your top retention targets.
+- **Actionable insight:** Customers with dropping engagement and fewer recent transactions are at highest churn risk—these are top retention targets.
 
 ---
 

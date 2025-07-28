@@ -48,27 +48,37 @@ Key achievements:
 
 1. **Data Cleaning & Preparation**
    - Parsed unstructured fields (brand/model, engine, etc.)
+   - Extracted and standardized engine specs (hp, liters, cylinders) from messy text, handled garbage values (e.g., "617.0HP 4.4L 8 Cylinder Engine Gasoline Fuel")
+   - Limited engine fields to plausible physical ranges to avoid clown data (e.g., liters < 10, cylinders < 16)
    - Handled missing values
    - Standardized categories
+ 
+2. **Engine Spec Mapping & Imputation**
+   - Built multi-key nested dictionaries for mapping engine specs by (model_year, brand, model) and sub-keys like (liters, cylinders)
+   - Handled duplicate or conflicting specs by taking mode, then max if tied
+   - Imputed missing specs using best-match rules:
+     - Prefer same MY, otherwise look back/forward within ±3 years
+     - Must match brand, model, and available engine specs (e.g., if only liters/cylinders are present, use that as lookup)
+   - Filled NA for hp/liters/cylinders using engine spec map, with clear rules for tie-breaking
 
-2. **EDA**
+3. **EDA**
    - Visualized price distributions and market trends
    - Explored feature relationships and outliers
 
-3. **Feature Engineering**
+4. **Feature Engineering**
    - Created structured features (e.g., accident history as binary, normalized engine size)
    - Derived new features from raw text
 
-4. **Model Development**
+5. **Model Development**
    - Built and tuned baseline and advanced models
    - Benchmarked performance with cross-validation
 
-5. **Model Evaluation**
+6. **Model Evaluation**
    - Evaluated models using RMSE, MAE, R²
    - Compared performance to baseline
    - Analyzed feature importances
 
-6. **Reporting & Documentation**
+7. **Reporting & Documentation**
    - Published code, results, and analysis on [GitHub](#)
 
 ---

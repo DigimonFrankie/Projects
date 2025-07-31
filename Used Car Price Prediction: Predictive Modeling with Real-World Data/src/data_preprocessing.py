@@ -571,6 +571,26 @@ class DataPreprocessor:
                 'No': 0
                 })
 
+
+    """
+    ## Checking for Missing Values
+    After all preprocessing steps, we should check for any remaining missing values in the DataFrame.
+    This will help ensure that the data is clean and ready for modeling.
+    """
+    def check_missing_values(self):
+        """
+        Check for missing values in the DataFrame.
+        
+        Returns:
+            pd.Series: A Series with the count of missing values for each column.
+        """
+        if (self.df.isnull().sum() > 0).any():
+            missing_values = self.df.isnull().sum()
+            print("Missing values found in the following columns:")
+            print(missing_values[missing_values > 0])
+        else:
+            print("No missing values found in the DataFrame.")
+
     def preprocess(self):
         """
         Run all preprocessing steps in order.
@@ -586,5 +606,6 @@ class DataPreprocessor:
         self.impute_engine_specs()
         self.impute_accident_history()
         self.impute_clean_title()
+        self.check_missing_values()
 
         return self.df

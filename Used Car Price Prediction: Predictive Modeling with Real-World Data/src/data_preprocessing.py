@@ -3,12 +3,24 @@ import pandas as pd
 import os
 import re
 import pickle
+import logging
 from collections import defaultdict, Counter
 
 class DataPreprocessor:
     def __init__(self, df, assets_dir):
         self.df = df.copy()
         self.assets_dir = assets_dir
+
+        ## set up logging
+        log_path = os.path.join(self.assets_dir, 'data_preprocessing.log')
+
+        logging.basicConfig(
+            filename=log_path,
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        logging.info("DataPreprocessor initialized. Logging to : %s", log_path)
 
     '''
     ---
@@ -21,6 +33,7 @@ class DataPreprocessor:
     - **Land** → _Land Rover_
     '''
     def correct_brand_names(self):
+        logging.info("START: correct_brand_names")
 
         ## Replace inconsistent brand names with full names
         self.df['brand'] = self.df['brand'].replace({
@@ -36,12 +49,14 @@ class DataPreprocessor:
 
             self.df.loc[self.df['brand'] == brand, 'model'] = self.df.loc[self.df['brand'] == brand, 'model'].str.split().apply(lambda x: ' '.join(x[1:]) if isinstance(x, list) and len(x) > 1 else '')
 
+        logging.info("END: correct_brand_names")
     
     '''
     Clean model names
     '''
     def clean_model_names(self):
-        
+        logging.info("START: clean_model_names")
+
         ## particularly for BMW models, clean up mutant model names with duplicated numeric badges
         def clean_bmw_model(model):
             """
@@ -72,10 +87,14 @@ class DataPreprocessor:
         mask = self.df['brand'] == 'BMW'
         self.df.loc[mask, 'model'] = self.df.loc[mask, 'model'].apply(clean_bmw_model)
 
+        logging.info("END: clean_model_names")
+
     '''
     ### Extract numbers columns
     '''
     def extract_numerical_columns(self):
+        logging.info("START: extract_numerical_columns")
+
         col_names = ['milage', 'price']
 
         def clean_numeric_col(series):
@@ -92,6 +111,8 @@ class DataPreprocessor:
         for col in col_names:
             self.df[col] = clean_numeric_col(self.df[col])
 
+        logging.info("END: extract_numerical_columns")
+
     '''
     #### ⛽ Fuel Type: Data Cleaning Needed
     '''
@@ -99,32 +120,42 @@ class DataPreprocessor:
         """
         Impute the fuel type based on the brand and model.
         """
+        logging.info("START: get_fuel_type")
+
         ## Check if same models already have fuel_type
         ## Load it back
+        map_path = os.path.join(self.assets_dir, 'fuel_type_map.pkl')
+        
         try:
-            with open(os.path.join(self.assets_dir, 'fuel_type_map.pkl'), 'rb') as f:
+            with open(map_path, 'rb') as f:
                 fuel_type_map = pickle.load(f)
         except FileNotFoundError:
-            print("File not found, creating new fuel_type_map.")
-            mask = (self.df['brand'].isin(['Tesla', 'Lucid', 'Rivian']) & 
-                    (self.df['fuel_type'].isin(['–', 'not supported']) |
-                    self.df['fuel_type'].isna()))
+            logging.warning("File not found, creating new fuel_type_map.")
+            fuel_type_map = {}
 
-            # Fill missing fuel_type for electric brands
-            self.df.loc[mask, 'fuel_type'] = 'Electric'
-            
-            mask = (~self.df['fuel_type'].isin(['–', 'not supported'])) & (~self.df['fuel_type'].isna())
-            fuel_type_map = (
-                self.df[mask]
-                .groupby(['brand', 'model'])['fuel_type']
-                .agg(lambda x: x.mode()[0] if not x.mode().empty else None)
-                .to_dict()
-            )
+        mask_electric = (self.df['brand'].isin(['Tesla', 'Lucid', 'Rivian']) & 
+                (self.df['fuel_type'].isin(['–', 'not supported']) |
+                self.df['fuel_type'].isna()))
 
-            ## Save the fuel_type_map    
-            with open(os.path.join(self.assets_dir,'fuel_type_map.pkl'), 'wb') as f:
-                pickle.dump(fuel_type_map, f)
+        # Fill missing fuel_type for electric brands
+        self.df.loc[mask_electric, 'fuel_type'] = 'Electric'
         
+        mask_valid = (~self.df['fuel_type'].isin(['–', 'not supported'])) & (~self.df['fuel_type'].isna())
+        fuel_type_map_new = (
+            self.df[mask_valid]
+            .groupby(['brand', 'model'])['fuel_type']
+            .agg(lambda x: x.mode()[0] if not x.mode().empty else None)
+            .to_dict()
+        )
+
+        ## update the fuel_type_map with the current DataFrame
+        fuel_type_map.update(fuel_type_map_new)
+
+        ## Save the fuel_type_map    
+        with open(map_path, 'wb') as f:
+            pickle.dump(fuel_type_map, f)
+            logging.info("Completed: Updated fuel_type_map saved to %s", map_path)
+
         ## Impute fuel_type
 
         def impute_fuel_type(row, fuel_type_map):
@@ -147,6 +178,7 @@ class DataPreprocessor:
         ## Apply the imputation function to the DataFrame
         self.df['fuel_type'] = self.df.apply(lambda row: impute_fuel_type(row, fuel_type_map), axis=1)
 
+        logging.info("END: get_fuel_type")
 
     '''
     #### ⚙️ Transmission Data: Standardization & Feature Extraction
@@ -165,7 +197,8 @@ class DataPreprocessor:
     - **Number of Speeds** (e.g., 6, 8, Single-Speed
     """
     def get_transmission_type(self):
-        
+        logging.info("START: get_transmission_type")
+
         def extract_transmission_type(val):
             """
             Extracts the transmission type from the given value.
@@ -189,8 +222,12 @@ class DataPreprocessor:
         
         self.df['transmission_type'] = self.df['transmission'].apply(extract_transmission_type)
 
+        logging.info("END: get_transmission_type")
+
 
     def get_transmission_speeds(self):
+        logging.info("START: get_transmission_speeds")
+
         def extract_transmission_speeds(val):
             """
             Extracts the number of speeds from the given transmission value.
@@ -213,7 +250,8 @@ class DataPreprocessor:
             return None
         
         self.df['transmission_speeds'] = self.df['transmission'].apply(extract_transmission_speeds)
-    
+
+        logging.info("END: get_transmission_speeds")
     """
     💡 **Why Keep “CVT” as Its Own Category?**
 
@@ -238,6 +276,8 @@ class DataPreprocessor:
 
     ## Impute transmission_type
     def impute_transmission(self):
+        logging.info("START: impute_transmission")
+
         def impute_transmission_type(row, transmission_type_map):
             """
             Impute the transmission type based on the brand and model.
@@ -271,46 +311,65 @@ class DataPreprocessor:
                 return row['transmission_speeds']
             
         ## Check if same models already have transmission types
+        map_path = os.path.join(self.assets_dir, 'transmission_type_map.pkl')
         try:
-            with open(os.path.join(self.assets_dir, 'transmission_type_map.pkl'), 'rb') as f:
+            with open(map_path, 'rb') as f:
                 transmission_type_map = pickle.load(f)
         except FileNotFoundError:
-            transmission_type_map = (
-                self.df[self.df['transmission_type'] != 'Other']
-                .groupby(['model_year', 'brand', 'model'])['transmission_type']
-                .agg(lambda x: x.mode()[0] if not x.mode().empty else 'Other')
-                .to_dict()
-            )
-            ## Save the transmission_type_map
-            with open(os.path.join(self.assets_dir, 'transmission_type_map.pkl'), 'wb') as f:
-                pickle.dump(transmission_type_map, f)
+            logging.warning("File not found, creating new transmission_type_map.")
+            transmission_type_map = {}
+        
+        transmission_type_map_new = (
+            self.df[self.df['transmission_type'] != 'Other']
+            .groupby(['model_year', 'brand', 'model'])['transmission_type']
+            .agg(lambda x: x.mode()[0] if not x.mode().empty else 'Other')
+            .to_dict()
+        )
+        ## Update the transmission_type_map with the current DataFrame
+        transmission_type_map.update(transmission_type_map_new)
+
+        ## Save the transmission_type_map
+        with open(map_path, 'wb') as f:
+            pickle.dump(transmission_type_map, f)
 
         ## Check if same models already have transmission speeds
+        map_path = os.path.join(self.assets_dir, 'transmission_speeds_map.pkl')
+
         try:
-            with open(os.path.join(self.assets_dir, 'transmission_speeds_map.pkl'), 'rb') as f:
+            with open(map_path, 'rb') as f:
                 transmission_speeds_map = pickle.load(f)
         except FileNotFoundError:
-            print("Dictionary not available.\nCreating transmission speeds map...")
-            transmission_speeds_map = (
-                self.df[self.df['transmission_speeds'].notna()]
-                .groupby(['model_year', 'brand', 'model'])['transmission_speeds']
-                .agg(lambda x: x.mode()[0] if not x.mode().empty else None)
-                .to_dict()
-            )
-            ## Save the transmission_speeds_map
-            with open(os.path.join(self.assets_dir, 'transmission_speeds_map.pkl'), 'wb') as f:
-                pickle.dump(transmission_speeds_map, f)
+            logging.warning("File not found, creating new transmission_speeds_map.")
+            transmission_speeds_map = {}
+        
+        transmission_speeds_map_new = (
+            self.df[self.df['transmission_speeds'].notna()]
+            .groupby(['model_year', 'brand', 'model'])['transmission_speeds']
+            .agg(lambda x: x.mode()[0] if not x.mode().empty else None)
+            .to_dict()
+        )
+
+        ## Update the transmission_speeds_map with the current DataFrame
+        transmission_speeds_map.update(transmission_speeds_map_new)
+
+        ## Save the transmission_speeds_map
+        with open(map_path, 'wb') as f:
+            pickle.dump(transmission_speeds_map, f)
         
         # Apply the imputation function
         self.df['transmission_type'] = self.df.apply(lambda row: impute_transmission_type(row, transmission_type_map), axis=1)
         # Apply the imputation function
         self.df['transmission_speeds'] = self.df.apply(lambda row: impute_transmission_speeds(row, transmission_speeds_map), axis=1)
 
+        logging.info("END: impute_transmission")
+
     '''
     ### Engine Data
     Engine data has rich info. it can be extract to various features. e.g. hoursepower (HP), Liter, Cylinder
     '''
     def extract_engine_data(self):
+        logging.info("START: extract_engine_data")
+
         def engine_extract(row):
             """
             Extracts engine features from the 'engine' column.
@@ -354,6 +413,8 @@ class DataPreprocessor:
         
         ## Apply engine extraction to the DataFrame
         self.df[['hp', 'liters', 'cylinders']] = self.df.apply(engine_extract, axis=1, result_type='expand')
+
+        logging.info("END: extract_engine_data")
 
     """
     #### 🛠️ Engine Data: Imputation & Standardization
@@ -406,6 +467,8 @@ class DataPreprocessor:
         """
         Impute missing engine specs (hp, liters, cylinders) using a mapping of known engine configurations.
         """
+        logging.info("START: impute_engine_specs")
+
         ## Function to impute all 3 null engine specs
         def impute_full_null_specs(row, engine_specs):
             """
@@ -502,26 +565,33 @@ class DataPreprocessor:
             
         
         ## Check if same models already have transmission speeds
+        map_path = os.path.join(self.assets_dir, 'engine_specs.pkl')
+
         try:
-            with open(os.path.join(self.assets_dir, 'engine_specs.pkl'), 'rb') as f:
+            with open(map_path, 'rb') as f:
                 engine_specs = pickle.load(f)
         except FileNotFoundError:
-            print("Dictionary not available.\nCreating engine specs map...")
+            logging.warning("File not found, creating new engine_specs.")
+            engine_specs = {}
             
-            engine_specs = defaultdict(Counter)
+        engine_specs_new = defaultdict(Counter)
 
-            for row in self.df[['model_year', 'brand', 'model', 'hp', 'liters', 'cylinders']].itertuples(index=False):
-                model_year, brand, model, hp, liters, cylinders = row
-                if pd.notna(hp) and pd.notna(liters) and pd.notna(cylinders):
-                    key = (model_year, brand, model)
-                    spec = (hp, liters, cylinders)
-                    engine_specs[key][spec] += 1
-            
-            ## Save the engine_specs
-            with open(os.path.join(self.assets_dir, 'engine_specs.pkl'), 'wb') as f:
-                pickle.dump(engine_specs, f)
+        for row in self.df[['model_year', 'brand', 'model', 'hp', 'liters', 'cylinders']].itertuples(index=False):
+            model_year, brand, model, hp, liters, cylinders = row
+            if pd.notna(hp) and pd.notna(liters) and pd.notna(cylinders):
+                key = (model_year, brand, model)
+                spec = (hp, liters, cylinders)
+                engine_specs[key][spec] += 1
+        
+        engine_specs.update(engine_specs_new)
+
+        ## Save the engine_specs
+        with open(map_path, 'wb') as f:
+            pickle.dump(engine_specs, f)
 
         self.df[['hp', 'liters', 'cylinders']] = self.df.apply(lambda row: assign_engine_specs(row, engine_specs), axis=1, result_type='expand')
+
+        logging.info("END: impute_engine_specs")
 
     """
     ## 🚗 Accident History Imputation
@@ -540,6 +610,8 @@ class DataPreprocessor:
     Leaving this field blank could easily mislead the model and users. If you’re not willing to admit “none,” we assume the worst.
     """
     def impute_accident_history(self):
+        logging.info("START: impute_accident_history")
+
         self.df['accident'] = self.df['accident'].fillna('At least 1 accident or damage reported')
 
         ## Convert 'accident' column to categorical type
@@ -547,6 +619,8 @@ class DataPreprocessor:
             'None reported': 0,
             'At least 1 accident or damage reported': 1
         })
+
+        logging.info("END: impute_accident_history")
 
     """
     ## 🚗 Clean_title Imputation
@@ -564,6 +638,8 @@ class DataPreprocessor:
     Bottom line: If you can't claim that it’s a clean title, we’re gonna assume the worst.  This way, we avoid misleading the model and users. If you’re not willing to say “yes,” we’re gonna treat it as “no.”
     """
     def impute_clean_title(self):
+        logging.info("START: impute_clean_title")
+
         self.df['clean_title'] = self.df['clean_title'].fillna('No')
 
         self.df['clean_title'] = self.df['clean_title'].map({
@@ -571,6 +647,7 @@ class DataPreprocessor:
                 'No': 0
                 })
 
+        logging.info("END: impute_clean_title")
 
     """
     ## Checking for Missing Values
@@ -584,17 +661,25 @@ class DataPreprocessor:
         Returns:
             pd.Series: A Series with the count of missing values for each column.
         """
-        if (self.df.isnull().sum() > 0).any():
-            missing_values = self.df.isnull().sum()
-            print("Missing values found in the following columns:")
-            print(missing_values[missing_values > 0])
+        logging.info("START: check_missing_values")
+
+        missing = self.df.isnull().sum()
+        total_missing = missing[missing > 0]
+        
+        if len(total_missing) > 0:
+            logging.warning("Missing values found:\n%s", total_missing)
         else:
-            print("No missing values found in the DataFrame.")
+            logging.info("No missing values found.")
+
+        logging.info("END: check_missing_values")
+
 
     def preprocess(self):
         """
         Run all preprocessing steps in order.
         """
+        logging.info("START: preprocess pipeline")
+
         self.correct_brand_names()
         self.clean_model_names()
         self.extract_numerical_columns()
@@ -608,4 +693,7 @@ class DataPreprocessor:
         self.impute_clean_title()
         self.check_missing_values()
 
-        return self.df
+        logging.info("END: preprocess pipeline")
+
+        return self.df.reset_index(drop=True)
+    

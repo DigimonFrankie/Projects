@@ -668,8 +668,10 @@ class DataPreprocessor:
         
         if len(total_missing) > 0:
             logging.warning("Missing values found:\n%s", total_missing)
+            print("Missing values found:\n", total_missing)
         else:
             logging.info("No missing values found.")
+            print("No missing values found.")
 
         logging.info("END: check_missing_values")
 
@@ -694,6 +696,7 @@ class DataPreprocessor:
         self.check_missing_values()
 
         logging.info("END: preprocess pipeline")
+        print("Data preprocessing completed successfully.")
 
         return self.df.reset_index(drop=True)
     

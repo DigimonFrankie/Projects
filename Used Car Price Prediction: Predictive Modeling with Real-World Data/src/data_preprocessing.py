@@ -810,6 +810,16 @@ class DataPreprocessor:
 
         logging.info("COMPLETE: check_missing_values")
 
+    def rename_column(self):
+        """
+        Noticed a typo in column name.
+        """
+        rename_col = {"milage": "mileage"}
+        if rename_col:
+            self.df.rename(columns=rename_col, inplace=True)
+            print(f"COMPLETE: rename_column. -\n {rename_col}")
+            logging.info(f"COMPLETE: rename_column. \n {rename_col}")
+
 
     def preprocess(self):
         """
@@ -830,6 +840,7 @@ class DataPreprocessor:
         self.get_int_color()
         self.impute_accident_history()
         self.impute_clean_title()
+        self.rename_column()
         self.check_missing_values()
         
         print("Data preprocessing completed successfully.")

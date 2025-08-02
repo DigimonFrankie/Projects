@@ -49,7 +49,7 @@ class DataPreprocessor:
 
             self.df.loc[self.df['brand'] == brand, 'model'] = self.df.loc[self.df['brand'] == brand, 'model'].str.split().apply(lambda x: ' '.join(x[1:]) if isinstance(x, list) and len(x) > 1 else '')
 
-        logging.info("END: correct_brand_names")
+        logging.info("COMPLETE: correct_brand_names")
     
     '''
     Clean model names
@@ -87,7 +87,7 @@ class DataPreprocessor:
         mask = self.df['brand'] == 'BMW'
         self.df.loc[mask, 'model'] = self.df.loc[mask, 'model'].apply(clean_bmw_model)
 
-        logging.info("END: clean_model_names")
+        logging.info("COMPLETE: clean_model_names")
 
     '''
     ### Extract numbers columns
@@ -111,7 +111,7 @@ class DataPreprocessor:
         for col in col_names:
             self.df[col] = clean_numeric_col(self.df[col])
 
-        logging.info("END: extract_numerical_columns")
+        logging.info("COMPLETE: extract_numerical_columns")
 
     '''
     #### ⛽ Fuel Type: Data Cleaning Needed
@@ -178,7 +178,7 @@ class DataPreprocessor:
         ## Apply the imputation function to the DataFrame
         self.df['fuel_type'] = self.df.apply(lambda row: impute_fuel_type(row, fuel_type_map), axis=1)
 
-        logging.info("END: get_fuel_type")
+        logging.info("COMPLETE: get_fuel_type")
 
     '''
     #### ⚙️ Transmission Data: Standardization & Feature Extraction
@@ -222,7 +222,7 @@ class DataPreprocessor:
         
         self.df['transmission_type'] = self.df['transmission'].apply(extract_transmission_type)
 
-        logging.info("END: get_transmission_type")
+        logging.info("COMPLETE: get_transmission_type")
 
 
     def get_transmission_speeds(self):
@@ -251,7 +251,7 @@ class DataPreprocessor:
         
         self.df['transmission_speeds'] = self.df['transmission'].apply(extract_transmission_speeds)
 
-        logging.info("END: get_transmission_speeds")
+        logging.info("COMPLETE: get_transmission_speeds")
     """
     💡 **Why Keep “CVT” as Its Own Category?**
 
@@ -361,7 +361,7 @@ class DataPreprocessor:
         # Apply the imputation function
         self.df['transmission_speeds'] = self.df.apply(lambda row: impute_transmission_speeds(row, transmission_speeds_map), axis=1)
 
-        logging.info("END: impute_transmission")
+        logging.info("COMPLETE: impute_transmission")
 
     '''
     ### Engine Data
@@ -414,7 +414,7 @@ class DataPreprocessor:
         ## Apply engine extraction to the DataFrame
         self.df[['hp', 'liters', 'cylinders']] = self.df.apply(engine_extract, axis=1, result_type='expand')
 
-        logging.info("END: extract_engine_data")
+        logging.info("COMPLETE: extract_engine_data")
 
     """
     #### 🛠️ Engine Data: Imputation & Standardization
@@ -591,8 +591,143 @@ class DataPreprocessor:
 
         self.df[['hp', 'liters', 'cylinders']] = self.df.apply(lambda row: assign_engine_specs(row, engine_specs), axis=1, result_type='expand')
 
-        logging.info("END: impute_engine_specs")
+        logging.info("COMPLETE: impute_engine_specs")
 
+    """
+    ## 🎨 Exterior Color Standardization
+
+    Real-world car data has a shit-ton of wild, marketing-driven color names—**"Lunar Silver Metallic", "Fuji White", "Hellayella Clearcoat",**, and so on.  
+    To make analysis and modeling less of painful, I map all these exotic color names to a tight set of standard base colors:
+
+    - **Black**
+    - **White**
+    - **Gray**
+    - **Silver**
+    - **Red**
+    - **Blue**
+    - **Green**
+    - **Brown**
+    - **Yellow**
+    - **Orange**
+    - **Gold**
+    - **Purple**
+    - **Pink**
+    - **Beige**
+    - **Custom** (when it's unknown)
+
+    Any color that can’t be confidently mapped gets labeled as **"Custom"**.
+    """
+
+    def get_ext_color(self):
+        logging.info("START: get_ext_color")
+        def standardize_ext_color(color):
+            """
+            Standardizes exterior color names.
+            
+            Args:
+                color (str): The exterior color to standardize.
+                
+            Returns:
+                str: The standardized color name.
+            """
+
+            c = str(color).lower()
+            # Custom manual matches for crazy marketing names
+            std_colors = {
+                'black':   {'black', 'noir', 'nero', 'obsidian', 'raven', 'sapphire'},
+                'white':   {'white', 'bianco', 'pearl', 'chalk', 'snow', 'glacier'},
+                'gray':    {'gray', 'grey', 'slate', 'graphite', 'granite', 'quartz', 'magnetite'},
+                'silver':  {'silver', 'argent', 'platinum', 'zircon', 'chrome', 'titanium', 'steel', 'mist'},
+                'red':     {'red', 'rosso', 'crimson', 'ruby', 'garnet', 'infrared', 'scarlet', 'sangria'},
+                'blue':    {'blue', 'azure', 'moonlight', 'caelum', 'aqua', 'navarra', 'pacific', 'bayside', 'blu'},
+                'green':   {'green', 'emerald', 'moss', 'python', 'jungle', 'verdi', 'verde', 'aventurine', 'lizard'},
+                'brown':   {'brown', 'bronze', 'caviar', 'dune', 'sandstone', 'cocoa', 'tungsten'},
+                'yellow':  {'yellow', 'mango', 'silician', 'banana', 'hellayella'},
+                'orange':  {'orange', 'arancio', 'volcanic', 'flame'},
+                'gold':    {'gold', 'champagne'},
+                'purple':  {'purple', 'plum', 'majestic', 'velvet'},
+                'pink':    {'pink', 'rose'},
+                'beige':   {'beige', 'ivory', 'sand', 'cob'}
+            }
+
+            for std_color, keyword in std_colors.items():
+                if any(word in c for word in keyword):
+                    return std_color
+
+            return 'custom'
+        
+        self.df['ext_color_std'] = self.df['ext_col'].apply(standardize_ext_color)
+
+        logging.info("COMPLETE: get_ext_color")
+
+    """
+    ---
+
+    ## 🪑 Interior Color Standardization
+
+    Manufacturers and dealers love to get creative with interior colors:  
+    **"Pimento / Ebony", "Nero Ade", "Kyalami Orange", "Tupelo", "Magma Red", "Very Light Cashmere"**.
+
+    **Strategy:**
+    - **Map all these fancy, compound, and marketing names to standard base colors:**
+        - **Black**
+        - **Gray**
+        - **White**
+        - **Beige**
+        - **Brown**
+        - **Red**
+        - **Blue**
+        - **Green**
+        - **Orange**
+        - **Yellow**
+        - **Gold**
+        - **Purple**
+        - **Silver**
+        - **Custom** (for everything too weird or ambiguous)
+    - If it's a two-tone, mixed, or slash-separated name, map it to the first standard color found (or label as "Custom" if totally unclassifiable).
+    - All the "Ebony", "Noir", "Nero", "Blk", "Obsidian" go to **Black**.  
+    - "Parchment", "Cashmere", "Almond", "Camel", "Ivory", etc. all become **Beige**.
+    - Same logic as exterior: **Custom**.
+    """
+    def get_int_color(self):
+        logging.info("START: get_int_color")
+
+        def standardize_int_color(color):
+            interior_std_color = {
+                'black':    {'black', 'ebony', 'blk', 'obsidian', 'carbon', 'satin black', 'jet black', 'global black', 'amg black', 'noir', 'graphite', 'charcoal'},
+                'white':    {'white', 'ivory', 'pearl', 'oyster', 'bianco', 'linen', 'grace white', 'cloud', 'very light cashmere', 'shale'},
+                'gray':     {'gray', 'grey', 'slate', 'stone', 'platinum', 'anthracite', 'medium pewter', 'ash', 'rock gray', 'medium ash gray', 'dark gray', 'light gray', 'graystone', 'dark galvanized', 'light slate', 'medium dark slate', 'medium stone'},
+                'brown':    {'brown', 'brandy', 'walnut', 'espresso', 'mocha', 'cappuccino', 'saddle', 'nougat', 'aragon', 'roast', 'amber', 'tan', 'camel', 'beige', 'sand', 'dune', 'saiga', 'boulder', 'chestnut', 'porpoise', 'mountain brown', 'macchiato', 'beluga', 'cocoa', 'sport', 'mesa', 'whisper beige', 'silk beige', 'parchment', 'almond'},
+                'red':      {'red', 'pimento', 'hotspur', 'rioja', 'magma red', 'adrenaline red', 'classic red', 'deep garnet', 'garnet'},
+                'blue':     {'blue', 'navy', 'charles blue', 'rhapsody blue', 'cobalt blue', 'magmagrey', 'tension', 'blue bolsters', 'deep cypress'},
+                'green':    {'green', 'agave green', 'deep cypress'},
+                'yellow':   {'yellow', 'giallo'},
+                'gold':     {'gold'},
+                'orange':   {'orange', 'sakhir', 'kyalami'},
+                'beige':    {'beige', 'ivory', 'macchiato', 'almond', 'saiga', 'shara', 'parchment', 'whisper beige', 'camel', 'sand beige'},
+                'purple':   {'purple', 'orchid'},
+            }
+
+            c = color.lower()
+
+            # First pass: check whole string
+            for std_color, keywords in interior_std_color.items():
+                if any(word in c for word in keywords):
+                    return std_color
+
+            # Second pass: check split parts if any separator is present
+            if any(sep in c for sep in ['/', 'w/', 'with']):
+                parts = re.split(r'/|w/|with', c)
+                for part in parts:
+                    part = part.strip()
+                    for std_color, keywords in interior_std_color.items():
+                        if any(word in part for word in keywords):
+                            return std_color
+
+            return 'custom'
+
+        self.df['int_col_std'] = self.df['int_col'].apply(standardize_int_color)
+        logging.info("COMPLETE: get_int_color")
     """
     ## 🚗 Accident History Imputation
 
@@ -620,7 +755,7 @@ class DataPreprocessor:
             'At least 1 accident or damage reported': 1
         })
 
-        logging.info("END: impute_accident_history")
+        logging.info("COMPLETE: impute_accident_history")
 
     """
     ## 🚗 Clean_title Imputation
@@ -647,7 +782,7 @@ class DataPreprocessor:
                 'No': 0
                 })
 
-        logging.info("END: impute_clean_title")
+        logging.info("COMPLETE: impute_clean_title")
 
     """
     ## Checking for Missing Values
@@ -667,13 +802,13 @@ class DataPreprocessor:
         total_missing = missing[missing > 0]
         
         if len(total_missing) > 0:
-            logging.warning("Missing values found:\n%s", total_missing)
             print("Missing values found:\n", total_missing)
+            logging.warning("Missing values found:\n%s", total_missing)
         else:
-            logging.info("No missing values found.")
             print("No missing values found.")
+            logging.info("No missing values found.")
 
-        logging.info("END: check_missing_values")
+        logging.info("COMPLETE: check_missing_values")
 
 
     def preprocess(self):
@@ -691,12 +826,13 @@ class DataPreprocessor:
         self.impute_transmission()
         self.extract_engine_data()
         self.impute_engine_specs()
+        self.get_ext_color()
+        self.get_int_color()
         self.impute_accident_history()
         self.impute_clean_title()
         self.check_missing_values()
-
-        logging.info("END: preprocess pipeline")
+        
         print("Data preprocessing completed successfully.")
+        logging.info("COMPLETE: preprocess pipeline")
 
         return self.df.reset_index(drop=True)
-    

@@ -85,3 +85,32 @@
 2025-08-01 17:43:24 - INFO - No missing values found.
 2025-08-01 17:43:24 - INFO - END: check_missing_values
 2025-08-01 17:43:24 - INFO - END: preprocess pipeline
+2025-08-01 17:54:26 - INFO - DataPreprocessor initialized. Logging to : ./assets/data_preprocessing.log
+2025-08-01 17:54:26 - INFO - START: preprocess pipeline
+2025-08-01 17:54:26 - INFO - START: correct_brand_names
+2025-08-01 17:54:26 - INFO - END: correct_brand_names
+2025-08-01 17:54:26 - INFO - START: clean_model_names
+2025-08-01 17:54:26 - INFO - END: clean_model_names
+2025-08-01 17:54:26 - INFO - START: extract_numerical_columns
+2025-08-01 17:54:26 - INFO - END: extract_numerical_columns
+2025-08-01 17:54:26 - INFO - START: get_fuel_type
+2025-08-01 17:54:26 - INFO - Completed: Updated fuel_type_map saved to ./assets/fuel_type_map.pkl
+2025-08-01 17:54:26 - INFO - END: get_fuel_type
+2025-08-01 17:54:26 - INFO - START: get_transmission_type
+2025-08-01 17:54:26 - INFO - END: get_transmission_type
+2025-08-01 17:54:26 - INFO - START: get_transmission_speeds
+2025-08-01 17:54:26 - INFO - END: get_transmission_speeds
+2025-08-01 17:54:26 - INFO - START: impute_transmission
+2025-08-01 17:54:26 - INFO - END: impute_transmission
+2025-08-01 17:54:26 - INFO - START: extract_engine_data
+2025-08-01 17:54:26 - INFO - END: extract_engine_data
+2025-08-01 17:54:26 - INFO - START: impute_engine_specs
+2025-08-01 17:54:27 - INFO - END: impute_engine_specs
+2025-08-01 17:54:27 - INFO - START: impute_accident_history
+2025-08-01 17:54:27 - INFO - END: impute_accident_history
+2025-08-01 17:54:27 - INFO - START: impute_clean_title
+2025-08-01 17:54:27 - INFO - END: impute_clean_title
+2025-08-01 17:54:27 - INFO - START: check_missing_values
+2025-08-01 17:54:27 - INFO - No missing values found.
+2025-08-01 17:54:27 - INFO - END: check_missing_values
+2025-08-01 17:54:27 - INFO - END: preprocess pipeline

@@ -38,7 +38,7 @@ class NumericalEDA:
         - rotate_xticks: Whether to rotate x-tick labels
         """
         if self.cat_cols is not None:
-            num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set(self.target_col))
+            num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set([self.target_col]))
             num_cols += [self.target_col]
             columns = num_cols
         else:

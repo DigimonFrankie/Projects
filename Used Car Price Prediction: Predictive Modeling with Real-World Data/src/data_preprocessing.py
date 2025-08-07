@@ -847,3 +847,7 @@ class DataPreprocessor:
         logging.info("COMPLETE: preprocess pipeline")
 
         return self.df.reset_index(drop=True)
+    
+class transformation:
+    def normalization(self):
+        pass

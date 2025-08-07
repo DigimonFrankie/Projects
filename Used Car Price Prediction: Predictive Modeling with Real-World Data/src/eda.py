@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 class NumericalEDA:
-    def __init__(self, dataframe, cat_cols: Optional[List[str]] = None, target_col: Optional[Union[str, List[str]]] = None):
+    def __init__(self, dataframe, cat_cols: Optional[List[str]] = None, target_col: str = None):
         """
         dataframe: pd.DataFrame.
         cat_cols (Optional[List[str]]): Columns to treat as categorical, exclude from corr.
@@ -39,7 +39,7 @@ class NumericalEDA:
         """
         if self.cat_cols is not None:
             num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set(self.target_col))
-            num_cols += self.target_col
+            num_cols += [self.target_col]
             columns = num_cols
         else:
             columns = self.dataframe.select_dtypes(include='number').columns.tolist()
@@ -175,8 +175,8 @@ class NumericalEDA:
             None.
         """
         if self.cat_cols is not None:
-            num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set(self.target_col))
-            num_cols += self.target_col
+            num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set([self.target_col]))
+            num_cols += [self.target_col]
             data_numerical = self.dataframe[num_cols]
         else:
             data_numerical = self.dataframe.select_dtypes(include='number')

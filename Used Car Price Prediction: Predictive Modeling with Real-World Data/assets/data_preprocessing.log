@@ -360,3 +360,38 @@
 2025-08-07 15:37:43 - INFO - No missing values found.
 2025-08-07 15:37:43 - INFO - COMPLETE: check_missing_values
 2025-08-07 15:37:43 - INFO - COMPLETE: preprocess pipeline
+2025-08-09 19:21:34 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-08-09 19:21:34 - INFO - START: preprocess pipeline
+2025-08-09 19:21:34 - INFO - START: correct_brand_names
+2025-08-09 19:21:34 - INFO - COMPLETE: correct_brand_names
+2025-08-09 19:21:34 - INFO - START: clean_model_names
+2025-08-09 19:21:34 - INFO - COMPLETE: clean_model_names
+2025-08-09 19:21:34 - INFO - START: extract_numerical_columns
+2025-08-09 19:21:34 - INFO - COMPLETE: extract_numerical_columns
+2025-08-09 19:21:34 - INFO - START: get_fuel_type
+2025-08-09 19:21:34 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-08-09 19:21:34 - INFO - COMPLETE: get_fuel_type
+2025-08-09 19:21:34 - INFO - START: get_transmission_type
+2025-08-09 19:21:34 - INFO - COMPLETE: get_transmission_type
+2025-08-09 19:21:34 - INFO - START: get_transmission_speeds
+2025-08-09 19:21:34 - INFO - COMPLETE: get_transmission_speeds
+2025-08-09 19:21:34 - INFO - START: impute_transmission
+2025-08-09 19:21:35 - INFO - COMPLETE: impute_transmission
+2025-08-09 19:21:35 - INFO - START: extract_engine_data
+2025-08-09 19:21:35 - INFO - COMPLETE: extract_engine_data
+2025-08-09 19:21:35 - INFO - START: impute_engine_specs
+2025-08-09 19:21:36 - INFO - COMPLETE: impute_engine_specs
+2025-08-09 19:21:36 - INFO - START: get_ext_color
+2025-08-09 19:21:36 - INFO - COMPLETE: get_ext_color
+2025-08-09 19:21:36 - INFO - START: get_int_color
+2025-08-09 19:21:36 - INFO - COMPLETE: get_int_color
+2025-08-09 19:21:36 - INFO - START: impute_accident_history
+2025-08-09 19:21:36 - INFO - COMPLETE: impute_accident_history
+2025-08-09 19:21:36 - INFO - START: impute_clean_title
+2025-08-09 19:21:36 - INFO - COMPLETE: impute_clean_title
+2025-08-09 19:21:36 - INFO - COMPLETE: rename_column. 
+ {'milage': 'mileage'}
+2025-08-09 19:21:36 - INFO - START: check_missing_values
+2025-08-09 19:21:36 - INFO - No missing values found.
+2025-08-09 19:21:36 - INFO - COMPLETE: check_missing_values
+2025-08-09 19:21:36 - INFO - COMPLETE: preprocess pipeline

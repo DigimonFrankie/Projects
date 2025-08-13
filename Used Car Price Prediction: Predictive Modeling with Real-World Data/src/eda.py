@@ -19,6 +19,7 @@ class NumericalEDA:
 
     ## Box plot and hist plot
     def plot_box_and_hist_per_feature(self,
+                                      compare_cols=None,
                                       hue_col=None, 
                                       cols_per_row=2, 
                                       figsize_per_plot=(6,5), 
@@ -37,15 +38,18 @@ class NumericalEDA:
         - bins: Bins for histogram
         - rotate_xticks: Whether to rotate x-tick labels
         """
-        if self.cat_cols is not None:
-            num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set([self.target_col]))
-            num_cols += [self.target_col]
-            columns = num_cols
+        if compare_cols:
+            columns = compare_cols
         else:
-            columns = self.dataframe.select_dtypes(include='number').columns.tolist()
+            if self.cat_cols is not None:
+                num_cols = list(set(self.dataframe.columns) - set(self.cat_cols) - set([self.target_col]))
+                num_cols += [self.target_col]
+                columns = num_cols
+            else:
+                columns = self.dataframe.select_dtypes(include='number').columns.tolist()
 
-        if hue_col and hue_col in columns:
-            columns.remove(hue_col)
+            if hue_col and hue_col in columns:
+                columns.remove(hue_col)
         
         n_features = len(columns)
         n_cols = cols_per_row

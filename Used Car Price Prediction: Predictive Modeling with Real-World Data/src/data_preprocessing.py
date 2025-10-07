@@ -251,6 +251,9 @@ class DataPreprocessor:
         
         self.df['transmission_speeds'] = self.df['transmission'].apply(extract_transmission_speeds)
 
+        ## Drop the original transmission column
+        self.df.drop(columns=['transmission'], inplace=True)
+
         logging.info("COMPLETE: get_transmission_speeds")
     """
     💡 **Why Keep “CVT” as Its Own Category?**
@@ -413,6 +416,9 @@ class DataPreprocessor:
         
         ## Apply engine extraction to the DataFrame
         self.df[['hp', 'liters', 'cylinders']] = self.df.apply(engine_extract, axis=1, result_type='expand')
+
+        ## Drop the original engine column
+        self.df.drop(columns=['engine'], inplace=True)
 
         logging.info("COMPLETE: extract_engine_data")
 
@@ -658,6 +664,9 @@ class DataPreprocessor:
         
         self.df['ext_color_std'] = self.df['ext_col'].apply(standardize_ext_color)
 
+        ## Drop original ext_col column
+        self.df.drop(columns=['ext_col'], inplace=True)
+
         logging.info("COMPLETE: get_ext_color")
 
     """
@@ -727,6 +736,10 @@ class DataPreprocessor:
             return 'custom'
 
         self.df['int_col_std'] = self.df['int_col'].apply(standardize_int_color)
+
+        ## Drop original int_col column
+        self.df.drop(columns=['int_col'], inplace=True)
+        
         logging.info("COMPLETE: get_int_color")
     """
     ## 🚗 Accident History Imputation
@@ -754,6 +767,9 @@ class DataPreprocessor:
             'None reported': 0,
             'At least 1 accident or damage reported': 1
         })
+
+        ## drop original 'accident' column
+        self.df.drop(columns=['accident'], inplace=True)
 
         logging.info("COMPLETE: impute_accident_history")
 

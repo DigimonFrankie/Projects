@@ -117,4 +117,4 @@ Key achievements:
 
 ## 📬 Contact
 
-If you'd like to collaborate or ask questions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/frankhzhao/) or weifu.h.zhao@gmail.com.
+If you'd like to collaborate or ask questions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/frankzhaods/) or weifu.h.zhao@gmail.com.

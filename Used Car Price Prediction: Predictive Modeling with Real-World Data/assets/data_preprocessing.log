@@ -395,3 +395,193 @@
 2025-08-09 19:21:36 - INFO - No missing values found.
 2025-08-09 19:21:36 - INFO - COMPLETE: check_missing_values
 2025-08-09 19:21:36 - INFO - COMPLETE: preprocess pipeline
+2025-08-14 14:34:24 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:37:01 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:38:24 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:40:43 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:41:44 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:42:03 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:42:03 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:42:04 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:42:04 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:42:19 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:50:44 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:50:44 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:50:45 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:50:45 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:53:25 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:53:25 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:53:25 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 14:53:25 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 15:08:54 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 15:08:54 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 15:08:54 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-08-14 15:08:54 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-10-04 16:52:15 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-04 16:52:15 - INFO - START: preprocess pipeline
+2025-10-04 16:52:15 - INFO - START: correct_brand_names
+2025-10-04 16:52:15 - INFO - COMPLETE: correct_brand_names
+2025-10-04 16:52:15 - INFO - START: clean_model_names
+2025-10-04 16:52:15 - INFO - COMPLETE: clean_model_names
+2025-10-04 16:52:15 - INFO - START: extract_numerical_columns
+2025-10-04 16:52:15 - INFO - COMPLETE: extract_numerical_columns
+2025-10-04 16:52:15 - INFO - START: get_fuel_type
+2025-10-04 16:52:15 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-04 16:52:15 - INFO - COMPLETE: get_fuel_type
+2025-10-04 16:52:15 - INFO - START: get_transmission_type
+2025-10-04 16:52:15 - INFO - COMPLETE: get_transmission_type
+2025-10-04 16:52:15 - INFO - START: get_transmission_speeds
+2025-10-04 16:52:15 - INFO - COMPLETE: get_transmission_speeds
+2025-10-04 16:52:15 - INFO - START: impute_transmission
+2025-10-04 16:52:15 - INFO - COMPLETE: impute_transmission
+2025-10-04 16:52:15 - INFO - START: extract_engine_data
+2025-10-04 16:52:15 - INFO - COMPLETE: extract_engine_data
+2025-10-04 16:52:15 - INFO - START: impute_engine_specs
+2025-10-04 16:52:16 - INFO - COMPLETE: impute_engine_specs
+2025-10-04 16:52:16 - INFO - START: get_ext_color
+2025-10-04 16:52:16 - INFO - COMPLETE: get_ext_color
+2025-10-04 16:52:16 - INFO - START: get_int_color
+2025-10-04 16:52:16 - INFO - COMPLETE: get_int_color
+2025-10-04 16:52:16 - INFO - START: impute_accident_history
+2025-10-04 16:52:16 - INFO - COMPLETE: impute_accident_history
+2025-10-04 16:52:16 - INFO - START: impute_clean_title
+2025-10-04 16:52:16 - INFO - COMPLETE: impute_clean_title
+2025-10-04 16:52:16 - INFO - COMPLETE: rename_column. 
+ {'milage': 'mileage'}
+2025-10-04 16:52:16 - INFO - START: check_missing_values
+2025-10-04 16:52:16 - INFO - No missing values found.
+2025-10-04 16:52:16 - INFO - COMPLETE: check_missing_values
+2025-10-04 16:52:16 - INFO - COMPLETE: preprocess pipeline
+2025-10-07 14:28:36 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-07 14:28:36 - INFO - START: preprocess pipeline
+2025-10-07 14:28:36 - INFO - START: correct_brand_names
+2025-10-07 14:28:36 - INFO - COMPLETE: correct_brand_names
+2025-10-07 14:28:36 - INFO - START: clean_model_names
+2025-10-07 14:28:36 - INFO - COMPLETE: clean_model_names
+2025-10-07 14:28:36 - INFO - START: extract_numerical_columns
+2025-10-07 14:28:36 - INFO - COMPLETE: extract_numerical_columns
+2025-10-07 14:28:36 - INFO - START: get_fuel_type
+2025-10-07 14:28:36 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-07 14:28:36 - INFO - COMPLETE: get_fuel_type
+2025-10-07 14:28:36 - INFO - START: get_transmission_type
+2025-10-07 14:28:36 - INFO - COMPLETE: get_transmission_type
+2025-10-07 14:28:36 - INFO - START: get_transmission_speeds
+2025-10-07 14:28:36 - INFO - COMPLETE: get_transmission_speeds
+2025-10-07 14:28:36 - INFO - START: impute_transmission
+2025-10-07 14:28:37 - INFO - COMPLETE: impute_transmission
+2025-10-07 14:28:37 - INFO - START: extract_engine_data
+2025-10-07 14:28:37 - INFO - COMPLETE: extract_engine_data
+2025-10-07 14:28:37 - INFO - START: impute_engine_specs
+2025-10-07 14:28:37 - INFO - COMPLETE: impute_engine_specs
+2025-10-07 14:28:37 - INFO - START: get_ext_color
+2025-10-07 14:28:37 - INFO - COMPLETE: get_ext_color
+2025-10-07 14:28:37 - INFO - START: get_int_color
+2025-10-07 14:28:38 - INFO - COMPLETE: get_int_color
+2025-10-07 14:28:38 - INFO - START: impute_accident_history
+2025-10-07 14:28:38 - INFO - COMPLETE: impute_accident_history
+2025-10-07 14:28:38 - INFO - START: impute_clean_title
+2025-10-07 14:28:38 - INFO - COMPLETE: impute_clean_title
+2025-10-07 14:28:38 - INFO - COMPLETE: rename_column. 
+ {'milage': 'mileage'}
+2025-10-07 14:28:38 - INFO - START: check_missing_values
+2025-10-07 14:28:38 - INFO - No missing values found.
+2025-10-07 14:28:38 - INFO - COMPLETE: check_missing_values
+2025-10-07 14:28:38 - INFO - COMPLETE: preprocess pipeline
+2025-10-07 15:15:31 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-07 15:15:31 - INFO - START: preprocess pipeline
+2025-10-07 15:15:31 - INFO - START: correct_brand_names
+2025-10-07 15:15:31 - INFO - COMPLETE: correct_brand_names
+2025-10-07 15:15:31 - INFO - START: clean_model_names
+2025-10-07 15:15:31 - INFO - COMPLETE: clean_model_names
+2025-10-07 15:15:31 - INFO - START: extract_numerical_columns
+2025-10-07 15:15:31 - INFO - COMPLETE: extract_numerical_columns
+2025-10-07 15:15:31 - INFO - START: get_fuel_type
+2025-10-07 15:15:32 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-07 15:15:32 - INFO - COMPLETE: get_fuel_type
+2025-10-07 15:15:32 - INFO - START: get_transmission_type
+2025-10-07 15:15:32 - INFO - COMPLETE: get_transmission_type
+2025-10-07 15:15:32 - INFO - START: get_transmission_speeds
+2025-10-07 15:16:41 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-07 15:16:41 - INFO - START: preprocess pipeline
+2025-10-07 15:16:41 - INFO - START: correct_brand_names
+2025-10-07 15:16:41 - INFO - COMPLETE: correct_brand_names
+2025-10-07 15:16:41 - INFO - START: clean_model_names
+2025-10-07 15:16:41 - INFO - COMPLETE: clean_model_names
+2025-10-07 15:16:41 - INFO - START: extract_numerical_columns
+2025-10-07 15:16:41 - INFO - COMPLETE: extract_numerical_columns
+2025-10-07 15:16:41 - INFO - START: get_fuel_type
+2025-10-07 15:16:41 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-07 15:16:41 - INFO - COMPLETE: get_fuel_type
+2025-10-07 15:16:41 - INFO - START: get_transmission_type
+2025-10-07 15:16:41 - INFO - COMPLETE: get_transmission_type
+2025-10-07 15:16:41 - INFO - START: get_transmission_speeds
+2025-10-07 15:18:41 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-07 15:18:41 - INFO - START: preprocess pipeline
+2025-10-07 15:18:41 - INFO - START: correct_brand_names
+2025-10-07 15:18:41 - INFO - COMPLETE: correct_brand_names
+2025-10-07 15:18:41 - INFO - START: clean_model_names
+2025-10-07 15:18:41 - INFO - COMPLETE: clean_model_names
+2025-10-07 15:18:41 - INFO - START: extract_numerical_columns
+2025-10-07 15:18:41 - INFO - COMPLETE: extract_numerical_columns
+2025-10-07 15:18:41 - INFO - START: get_fuel_type
+2025-10-07 15:18:41 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-07 15:18:41 - INFO - COMPLETE: get_fuel_type
+2025-10-07 15:18:41 - INFO - START: get_transmission_type
+2025-10-07 15:18:41 - INFO - COMPLETE: get_transmission_type
+2025-10-07 15:18:41 - INFO - START: get_transmission_speeds
+2025-10-07 15:18:41 - INFO - COMPLETE: get_transmission_speeds
+2025-10-07 15:18:41 - INFO - START: impute_transmission
+2025-10-07 15:18:42 - INFO - COMPLETE: impute_transmission
+2025-10-07 15:18:42 - INFO - START: extract_engine_data
+2025-10-07 15:18:42 - INFO - COMPLETE: extract_engine_data
+2025-10-07 15:18:42 - INFO - START: impute_engine_specs
+2025-10-07 15:18:43 - INFO - COMPLETE: impute_engine_specs
+2025-10-07 15:18:43 - INFO - START: get_ext_color
+2025-10-07 15:18:43 - INFO - COMPLETE: get_ext_color
+2025-10-07 15:18:43 - INFO - START: get_int_color
+2025-10-07 15:18:43 - INFO - COMPLETE: get_int_color
+2025-10-07 15:18:43 - INFO - START: impute_accident_history
+2025-10-07 15:18:43 - INFO - COMPLETE: impute_accident_history
+2025-10-07 15:18:43 - INFO - START: impute_clean_title
+2025-10-07 15:18:43 - INFO - COMPLETE: impute_clean_title
+2025-10-07 15:18:43 - INFO - COMPLETE: rename_column. 
+ {'milage': 'mileage'}
+2025-10-07 15:18:43 - INFO - START: check_missing_values
+2025-10-07 15:18:43 - INFO - No missing values found.
+2025-10-07 15:18:43 - INFO - COMPLETE: check_missing_values
+2025-10-07 15:18:43 - INFO - COMPLETE: preprocess pipeline
+2025-10-07 15:22:47 - INFO - DataPreprocessor initialized. Logging to : /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/data_preprocessing.log
+2025-10-07 15:22:47 - INFO - START: preprocess pipeline
+2025-10-07 15:22:47 - INFO - START: correct_brand_names
+2025-10-07 15:22:47 - INFO - COMPLETE: correct_brand_names
+2025-10-07 15:22:47 - INFO - START: clean_model_names
+2025-10-07 15:22:47 - INFO - COMPLETE: clean_model_names
+2025-10-07 15:22:47 - INFO - START: extract_numerical_columns
+2025-10-07 15:22:47 - INFO - COMPLETE: extract_numerical_columns
+2025-10-07 15:22:47 - INFO - START: get_fuel_type
+2025-10-07 15:22:47 - INFO - Completed: Updated fuel_type_map saved to /Users/autofrankie/GitHub/Projects/Used Car Price Prediction: Predictive Modeling with Real-World Data/assets/fuel_type_map.pkl
+2025-10-07 15:22:47 - INFO - COMPLETE: get_fuel_type
+2025-10-07 15:22:47 - INFO - START: get_transmission_type
+2025-10-07 15:22:47 - INFO - COMPLETE: get_transmission_type
+2025-10-07 15:22:47 - INFO - START: get_transmission_speeds
+2025-10-07 15:22:47 - INFO - COMPLETE: get_transmission_speeds
+2025-10-07 15:22:47 - INFO - START: impute_transmission
+2025-10-07 15:22:48 - INFO - COMPLETE: impute_transmission
+2025-10-07 15:22:48 - INFO - START: extract_engine_data
+2025-10-07 15:22:48 - INFO - COMPLETE: extract_engine_data
+2025-10-07 15:22:48 - INFO - START: impute_engine_specs
+2025-10-07 15:22:48 - INFO - COMPLETE: impute_engine_specs
+2025-10-07 15:22:48 - INFO - START: get_ext_color
+2025-10-07 15:22:48 - INFO - COMPLETE: get_ext_color
+2025-10-07 15:22:48 - INFO - START: get_int_color
+2025-10-07 15:22:48 - INFO - COMPLETE: get_int_color
+2025-10-07 15:22:48 - INFO - START: impute_accident_history
+2025-10-07 15:22:48 - INFO - COMPLETE: impute_accident_history
+2025-10-07 15:22:48 - INFO - START: impute_clean_title
+2025-10-07 15:22:48 - INFO - COMPLETE: impute_clean_title
+2025-10-07 15:22:48 - INFO - COMPLETE: rename_column. 
+ {'milage': 'mileage'}
+2025-10-07 15:22:48 - INFO - START: check_missing_values
+2025-10-07 15:22:48 - INFO - No missing values found.
+2025-10-07 15:22:48 - INFO - COMPLETE: check_missing_values
+2025-10-07 15:22:48 - INFO - COMPLETE: preprocess pipeline

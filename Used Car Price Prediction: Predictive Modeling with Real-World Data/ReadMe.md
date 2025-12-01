@@ -74,38 +74,67 @@ Key achievements:
    - Benchmarked performance with cross-validation
 
 6. **Model Evaluation**
-   - Evaluated models using RMSE, MAE, R²
+   - Evaluated models using RMSE, R²
    - Compared performance to baseline
    - Analyzed feature importances
 
 7. **Reporting & Documentation**
-   - Published code, results, and analysis on [GitHub](#)
+   - Published code, results, and analysis on [GitHub](https://github.com/DigimonFrankie/Projects/tree/main/Used%20Car%20Price%20Prediction%3A%20Predictive%20Modeling%20with%20Real-World%20Data)
 
 ---
 
 ## 📈 Results
 
-- **Best model:** 
+- **Best model:** LightGBM
 - **Performance:**  
-  - RMSE: 
-  - R²: 
-  - MAE: 
-  - Improvement vs. baseline: 
+  - RMSE: 126,305.00
+  - R²: 0.220
+  - Improvement vs. baseline: Compared to the baseline (Elastic Net: RMSE $137,163.17, R² 0.07), the best model (LightGBM) achieved an RMSE of $126,305.00 and an R² of 0.22, representing an ~8% reduction in prediction error and substantially higher variance explained.
 - **Top features influencing price:** 
 
+![Feature Importance](/Used%20Car%20Price%20Prediction:%20Predictive%20Modeling%20with%20Real-World%20Data/src/img/feature%20importance.png)
+
+![SHAP summary plot](/Used%20Car%20Price%20Prediction:%20Predictive%20Modeling%20with%20Real-World%20Data/src/img/shap.png)
 ---
 
 ## 📌 Key Takeaways
 
-- **Technical impact:** 
-- **Business value:** 
-- **Interpretability:** 
+- **Technical impact:**  
+    Developed a fully automated regression pipeline using advanced tree-based algorithms (LightGBM, XGBoost, CatBoost) and linear models, enabling efficient hyperparameter tuning, robust feature engineering, and reproducible model selection. Improved model performance on the validation set by 8.5% RMSE reduction versus baseline, with modular Python code for easy extension.
+
+- **Business value:**  
+    Identified the most influential factors driving used car prices—such as horsepower, mileage, model year, and brand—empowering data-driven pricing strategies. The model enables stakeholders to better understand price drivers, detect under- or over-valued listings, and optimize inventory or pricing policies based on explainable predictions.
+
+- **Interpretability:**  
+    Leveraged SHAP analysis to provide transparent explanations of model predictions, showing how key features like horsepower, mileage, and car age affect price estimates. This interpretability builds trust with business users and ensures that the model’s logic aligns with domain knowledge and industry expectations.
 
 ---
 
 ## 🧠 Future Work
 
-- 
+- **Data sample size:**  
+    Increase dataset size by collecting more historical transactions and integrating external sources. A larger, more diverse dataset will improve model generalizability and predictive performance, especially for underrepresented car types.
+
+- **Segmented modeling:**  
+    Build separate models for different vehicle segments—such as exotic, premium, and mass-market cars—to better capture pricing dynamics unique to each category. This could involve stratifying the data by brand or model tier before training.
+
+- **Model enhancement:**  
+    Experiment with additional advanced algorithms (e.g., neural networks, stacked ensembles) and leverage model ensembling for further performance gains.
+
+- **Feature enrichment:**  
+    Incorporate new data sources (market demand, regional trends, seller/buyer ratings) or extract features from car images using computer vision for richer context.
+
+- **Handling outliers and rare categories:**  
+    Develop specialized models or preprocessing strategies for extreme price values and rare brands/models to improve robustness.
+
+- **Temporal modeling:**  
+    Integrate time-series techniques to better capture market seasonality and price trends over time.
+
+- **Model deployment:**  
+    Deploy the best model as an API or dashboard for real-time pricing support to end-users or business stakeholders.
+
+- **User feedback loop:**  
+    Incorporate feedback mechanisms to learn from actual sale prices, continuously retraining and updating the model for sustained accuracy.
 
 ---
 
@@ -117,4 +146,4 @@ Key achievements:
 
 ## 📬 Contact
 
-If you'd like to collaborate or ask questions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/frankzhaods/) or weifu.h.zhao@gmail.com.
+If you'd like to collaborate or ask questions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/frankzhaods/) or frank.zhao.ds@outlook.com.

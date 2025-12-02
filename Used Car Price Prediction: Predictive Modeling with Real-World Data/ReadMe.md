@@ -139,6 +139,33 @@ Key achievements:
 ---
 
 ## 📚 Documentation & Notebooks
+All code, notebooks, and documentation for this project are organized as follows:
+- [`Data Preprocessing.ipynb`](Data%20Preprocessing.ipynb)  
+  Interactive notebook for raw data cleaning, feature engineering, and building preprocessing pipelines.
+- [`EDA.ipynb`](EDA.ipynb)  
+  Exploratory Data Analysis: Univariate and multivariate analysis, visualization of target and features, correlation analysis, and outlier detection.
+- [`machine learning/baseline.ipynb`](./machine%20learning/baseline.ipynb)  
+  Baseline modeling: Pipeline application, OLS regression, Lasso, Ridge, ElasticNet. Includes bias correction and log transformation of skewed features.
+- [`machine learning/tree_base_models.ipynb`](./machine%20learning/tree_base_models.ipynb)  
+  Advanced modeling: Tree-based algorithms (Random Forest, Gradient Boosting, XGBoost, CatBoost), hyperparameter tuning, result interpretation, feature importance, and SHAP analysis.
+- [`src/eda.py`](./src/eda.py)  
+  Modular EDA functions for summary statistics, visualizations, and automated feature insights.
+- [`src/data_preprocessing.py`](./src/data_preprocessing.py)  
+  Utilities for data cleaning, feature engineering, imputation, and categorical/numerical preprocessing pipelines.
+- [`src/save_results.py`](./src/save_results.py)  
+  Automated tracking of grid/randomized search results, saving of best model parameters, metrics, and serialized models.
+- [`src/optimal_model/`](./src/optimal_model/)  
+  Scripts and modules for building, evaluating, and deploying the optimal ML pipeline.
+- [`src/best_models/`](./src/best_models/)  
+  Saved trained models for reproducibility and downstream deployment.
+
+- **Data Dictionary:**  
+    | Column         | Description                        |
+    |---------------|------------------------------------|
+    | price         | Target variable: used car price     |
+    | hp            | Horsepower                         |
+    | mileage       | Mileage (miles)                    |
+    | ...           | ...                                |
 
 
 

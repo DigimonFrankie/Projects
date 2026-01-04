@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-from typing import List, Optional, Union
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import math
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-=======
 import pandas as pd
 import numpy as np
 import math
@@ -14,7 +5,6 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import seaborn as sns
 from typing import List, Optional
->>>>>>> update-eda
 
 class NumericalEDA:
     def __init__(
@@ -31,10 +21,6 @@ class NumericalEDA:
         self.exclude_col = exclude_col or []
         self.categorical_target = categorical_target
 
-<<<<<<< HEAD
-    # ---------- helpers ----------
-=======
->>>>>>> update-eda
     def _get_num_columns(self):
         cols = (
             set(self.df.columns)
@@ -44,17 +30,12 @@ class NumericalEDA:
         )
         return sorted(cols)
 
-<<<<<<< HEAD
-    def _auto_palette(self):
-    # Make sure to convert to str for both keys and values!
-=======
     def _binary_palette(self):
         # Always use strings!
         return {"0": "#1f77b4", "1": "#ff7f0e"}
 
     def _auto_palette(self):
         # Use tab10 for non-binary/multiclass
->>>>>>> update-eda
         labels = self.df[self.target_col].dropna().astype(str).unique()
         return dict(zip(labels, sns.color_palette("tab10", len(labels))))
 
@@ -71,30 +52,17 @@ class NumericalEDA:
             y = 1 - (g * 2 / (n_rows * 2))
             fig.patches.append(
                 patches.Rectangle((0, y), 1, 0.001,
-<<<<<<< HEAD
-                                  transform=fig.transFigure,
-                                  color="grey", alpha=0.1)
-=======
                                     transform=fig.transFigure,
                                     color="grey", alpha=0.1)
->>>>>>> update-eda
             )
         for c in range(1, n_cols):
             x = c / n_cols
             fig.patches.append(
                 patches.Rectangle((x, 0), 0.001, 1,
-<<<<<<< HEAD
-                                  transform=fig.transFigure,
-                                  color="grey", alpha=0.1)
-            )
-
-    # ---------- main plotting ----------
-=======
                                     transform=fig.transFigure,
                                     color="grey", alpha=0.1)
             )
 
->>>>>>> update-eda
     def plot_box_and_hist_per_feature(
         self,
         cols_per_row: int = 2,
@@ -115,9 +83,6 @@ class NumericalEDA:
             squeeze=False
         )
 
-<<<<<<< HEAD
-        palette = self._auto_palette() if self.categorical_target and self.target_col else None
-=======
         # Choose palette for categorical target
         """
         Set target value to string to avoid type inconsistency.
@@ -131,7 +96,6 @@ class NumericalEDA:
                 palette = self._auto_palette()
 
         showed_legend = False
->>>>>>> update-eda
 
         for idx, col in enumerate(num_cols):
             r = (idx // n_cols) * 2
@@ -139,24 +103,14 @@ class NumericalEDA:
 
             # ---------- BOXPLOT ----------
             if self.categorical_target and self.target_col:
-<<<<<<< HEAD
-                sns.boxplot(
-                    data=self.df.assign(**{self.target_col: self.df[self.target_col].astype(str)}),
-=======
                 plot_df = self.df.assign(**{self.target_col: self.df[self.target_col].astype(str)})
                 sns.boxplot(
                     data=plot_df,
->>>>>>> update-eda
                     x=self.target_col,
                     y=col,
                     hue=self.target_col,
                     palette=palette,
                     showfliers=False,
-<<<<<<< HEAD
-                    ax=axes[r][c]
-                )
-                axes[r][c].set_title(f"{col} vs {self.target_col}")
-=======
                     ax=axes[r][c],
                     dodge=False  # Avoids duplicate legends for binary
                 )
@@ -168,7 +122,6 @@ class NumericalEDA:
                     showed_legend = True
                 elif leg:
                     leg.remove()
->>>>>>> update-eda
             else:
                 sns.boxplot(
                     y=self.df[col],
@@ -182,17 +135,10 @@ class NumericalEDA:
 
             # ---------- HISTOGRAM ----------
             ax_hist = axes[r + 1][c]
-<<<<<<< HEAD
-
-            if self.categorical_target and self.target_col:
-                sns.histplot(
-                    data=self.df.assign(**{self.target_col: self.df[self.target_col].astype(str)}),
-=======
             if self.categorical_target and self.target_col:
                 plot_df = self.df.assign(**{self.target_col: self.df[self.target_col].astype(str)})
                 sns.histplot(
                     data=plot_df,
->>>>>>> update-eda
                     x=col,
                     hue=self.target_col,
                     kde=True,
@@ -204,13 +150,10 @@ class NumericalEDA:
                     ax=ax_hist
                 )
                 ax_hist.set_title(f"{col} by {self.target_col}")
-<<<<<<< HEAD
-=======
                 # Only legend in the first plot of the grid
                 leg = ax_hist.get_legend()
                 if leg:
                     leg.remove()
->>>>>>> update-eda
             else:
                 sns.histplot(
                     self.df[col],
@@ -244,11 +187,7 @@ class NumericalEDA:
         rotation: int = 45
     ):
         columns = self._get_num_columns()
-<<<<<<< HEAD
-        data_numerical = self.dataframe[columns]
-=======
         data_numerical = self.df[columns]
->>>>>>> update-eda
         corr_matrix = data_numerical.corr()
         plt.figure(figsize=figsize)
         ax = sns.heatmap(
@@ -292,11 +231,7 @@ class CategoricalEDA:
                 legend_title = f"{self.target_col} (binned)"
                 show_hue = True
             elif target.nunique() <= 20:
-<<<<<<< HEAD
-                hue_data = target
-=======
                 hue_data = target.astype(str)
->>>>>>> update-eda
                 legend_title = self.target_col
                 show_hue = True
         return hue_data, legend_title, show_hue
@@ -346,8 +281,6 @@ class CategoricalEDA:
         )
         hue_data, legend_title, show_hue = self._prep_hue(n_bins_for_continuous_target)
 
-<<<<<<< HEAD
-=======
         # Set binary palette for 0/1 targets; else fallback to tab10
         palette = None
         if show_hue:
@@ -357,7 +290,6 @@ class CategoricalEDA:
             else:
                 palette = dict(zip([str(u) for u in unique_hue], sns.color_palette("tab10", len(unique_hue))))
 
->>>>>>> update-eda
         for idx, col in enumerate(plot_cols):
             row_idx = (idx // n_cols) * 2
             col_idx = idx % n_cols
@@ -367,17 +299,10 @@ class CategoricalEDA:
             ax_top = axes[row_idx][col_idx]
             if show_hue:
                 sns.countplot(
-<<<<<<< HEAD
-                    x=grouped_col,
-                    hue=hue_data,
-                    order=categories,
-                    palette="tab10",
-=======
                     x=grouped_col.astype(str),
                     hue=hue_data,
                     order=[str(cat) for cat in categories],
                     palette=palette,
->>>>>>> update-eda
                     ax=ax_top
                 )
                 ax_top.legend(title=legend_title, fontsize=8, title_fontsize=9)
@@ -408,34 +333,14 @@ class CategoricalEDA:
 
             # --- Normalized barplot ---
             ax_bottom = axes[row_idx + 1][col_idx]
-<<<<<<< HEAD
-
-            if show_hue:
-                norm_df = pd.crosstab(grouped_col, hue_data, normalize="index")
-
-                # Ensure consistent order
-                all_hue_levels = hue_data.unique().tolist()
-                norm_df = norm_df.reindex(index=categories, columns=all_hue_levels, fill_value=0)
-=======
             if show_hue:
                 norm_df = pd.crosstab(grouped_col.astype(str), hue_data, normalize="index")
                 all_hue_levels = [str(u) for u in pd.Series(hue_data).unique()]
                 norm_df = norm_df.reindex(index=[str(cat) for cat in categories], columns=all_hue_levels, fill_value=0)
->>>>>>> update-eda
 
                 norm_df.plot(
                     kind="bar",
                     stacked=True,
-<<<<<<< HEAD
-                    colormap="tab10",
-                    ax=ax_bottom,
-                    legend=False
-                )
-
-                ax_bottom.legend(title=legend_title, fontsize=8, title_fontsize=9)
-
-                # ✅ CENTERED % LABELS (CORRECT FOR STACKED BARS)
-=======
                     color=[palette[str(u)] for u in all_hue_levels],
                     ax=ax_bottom,
                     legend=False
@@ -443,16 +348,11 @@ class CategoricalEDA:
                 ax_bottom.legend(title=legend_title, fontsize=8, title_fontsize=9)
 
                 # Centered % labels for stacked bars
->>>>>>> update-eda
                 for x_idx, category in enumerate(norm_df.index):
                     bottom = 0
                     for cls in norm_df.columns:
                         height = norm_df.loc[category, cls]
-<<<<<<< HEAD
-                        if height >= 0.05:  # threshold to avoid tiny unreadable slices
-=======
                         if height >= 0.05:
->>>>>>> update-eda
                             ax_bottom.text(
                                 x_idx,
                                 bottom + height / 2,
@@ -463,10 +363,6 @@ class CategoricalEDA:
                                 color="white"
                             )
                         bottom += height
-<<<<<<< HEAD
-
-=======
->>>>>>> update-eda
             else:
                 norm = grouped_col.value_counts(normalize=True).reindex(categories).fillna(0)
                 norm.plot(kind="bar", color="#1f77b4", ax=ax_bottom)
@@ -484,13 +380,8 @@ class CategoricalEDA:
                             color="white"
                         )
         self._hide_unused_axes(axes, n_features, n_rows, n_cols)
-<<<<<<< HEAD
-        
-        # --- XTICK ROTATION FOR ALL SUBPLOTS ---
-=======
 
         # XTICK ROTATION FOR ALL SUBPLOTS
->>>>>>> update-eda
         for axrow in axes:
             for ax in axrow:
                 for label in ax.get_xticklabels():

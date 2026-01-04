@@ -84,6 +84,9 @@ class NumericalEDA:
         )
 
         # Choose palette for categorical target
+        """
+        Set target value to string to avoid type inconsistency.
+        """
         palette = None
         if self.categorical_target and self.target_col:
             unique_vals = sorted(self.df[self.target_col].dropna().astype(str).unique())

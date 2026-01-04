@@ -52,15 +52,15 @@ class NumericalEDA:
             y = 1 - (g * 2 / (n_rows * 2))
             fig.patches.append(
                 patches.Rectangle((0, y), 1, 0.001,
-                                  transform=fig.transFigure,
-                                  color="grey", alpha=0.1)
+                                    transform=fig.transFigure,
+                                    color="grey", alpha=0.1)
             )
         for c in range(1, n_cols):
             x = c / n_cols
             fig.patches.append(
                 patches.Rectangle((x, 0), 0.001, 1,
-                                  transform=fig.transFigure,
-                                  color="grey", alpha=0.1)
+                                    transform=fig.transFigure,
+                                    color="grey", alpha=0.1)
             )
 
     def plot_box_and_hist_per_feature(
@@ -92,6 +92,8 @@ class NumericalEDA:
             else:
                 palette = self._auto_palette()
 
+        showed_legend = False
+
         for idx, col in enumerate(num_cols):
             r = (idx // n_cols) * 2
             c = idx % n_cols
@@ -111,10 +113,12 @@ class NumericalEDA:
                 )
                 axes[r][c].set_title(f"{col} vs {self.target_col}")
                 # Only need legend for one plot in each column
-                if c == 0 and r == 0:
-                    axes[r][c].legend(title=self.target_col)
-                else:
-                    axes[r][c].legend([],[], frameon=False)
+                leg = axes[r][c].get_legend()
+                if leg and not showed_legend:
+                    leg.set_title(self.target_col)
+                    showed_legend = True
+                elif leg:
+                    leg.remove()
             else:
                 sns.boxplot(
                     y=self.df[col],
@@ -144,10 +148,9 @@ class NumericalEDA:
                 )
                 ax_hist.set_title(f"{col} by {self.target_col}")
                 # Only legend in the first plot of the grid
-                if c == 0 and r == 0:
-                    ax_hist.legend(title=self.target_col)
-                else:
-                    ax_hist.legend([],[], frameon=False)
+                leg = ax_hist.get_legend()
+                if leg:
+                    leg.remove()
             else:
                 sns.histplot(
                     self.df[col],

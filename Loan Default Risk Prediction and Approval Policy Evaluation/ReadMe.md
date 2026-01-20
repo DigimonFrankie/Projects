@@ -86,10 +86,13 @@ Key achievements:
    - Analyzed demographic and regional trends
    - Explored segment-specific risk factors and policy impacts
 
-3. **A/B Policy Simulation**
-   - Simulated old vs. new approval policies (e.g., Credit_Score ≥600 vs. ≥650)
-   - Assigned groups based on policy rules and analyzed differences in approval rates, default rates, and projected revenue/loss
-   - Conducted statistical tests (t-test, chi-square) to assess policy impact significance
+3. **Customer Segmentation via Clustering**
+   - Used Elbow and Silhouette methods to select the optimal number of customer groups.
+   - Applied K-Means to assign each record to a cluster based on engineered numerical and encoded categorical features.
+   - Calculated and compared the default rates within each cluster to reveal risk patterns.
+   - Used PCA to visualize and interpret the primary drivers behind cluster formation.
+   - Summarized key characteristics (e.g., financial, demographic, behavioral) for each cluster to enable actionable business segmentation.
+   - Linked cluster findings to potential strategies for targeted credit policy, product offers, or risk mitigation.
 
 4. **Machine Learning Modeling**
    - Built predictive models (Logistic Regression, Decision Trees) using engineered features
@@ -108,8 +111,8 @@ Key achievements:
 
 ## 📈 Results
 
-- **Policy Simulation:**  
-    - [To be filled in: Key findings about how approval rates, default rates, and revenue change under new vs. old policies.]
+- **Customer Segmentation:**  
+    - [To be filled in: Identified distinct customer groups using clustering, compared default rates and financial profiles across segments, and derived interpretable risk patterns to support targeted credit strategy.]
 - **Machine Learning Model:**  
     - [To be filled in: Model performance metrics—ROC-AUC, confusion matrix, top predictive features.]
 - **Business Impact:**  
@@ -127,7 +130,7 @@ Key achievements:
 
 ## 🧠 Future Work
 
-- Add more advanced models (e.g., Random Forest, XGBoost) and ensemble techniques
+- Add more advanced models and ensemble techniques
 - Expand feature engineering (interaction terms, external data sources)
 - Fairness analysis across demographic groups
 - Build an interactive dashboard for real-time policy simulation
@@ -150,7 +153,6 @@ Key achievements:
 |----------------|------------------------------------|
 | ...            | ... (see above)                    |
 
-*(Repeat the feature dictionary here if you want, or just link to the above section for quick reference.)*
 
 ---
 
